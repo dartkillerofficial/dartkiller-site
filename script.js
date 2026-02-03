@@ -4,4 +4,5 @@ function showTime() {
 showTime();
 setInterval(function () {
 	showTime();
-}, 1000);
+	console.log("hacked");
+}, 10000);
