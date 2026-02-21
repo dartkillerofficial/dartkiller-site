@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,131 +17,161 @@
       --accent:#e10600;
       --gold:#c7a24b;
     }
-    a{text-decoration:none;color:inherit}/* HERO */
-header{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:40px 20px;
-  background:radial-gradient(circle at top,#1a1a1a,#000);
-}
-header img{width:180px;height:180px;margin-bottom:20px}
-header h1{font-size:3rem;letter-spacing:2px}
-header h2{margin-top:8px;font-weight:300;letter-spacing:5px;color:#cfcfcf}
-header p{max-width:650px;margin-top:18px;color:#bdbdbd}
-.badges{margin-top:20px;font-size:.9rem;color:#eee}
-.cta{margin-top:30px;display:flex;gap:15px;flex-wrap:wrap;justify-content:center}
-.cta a{
-  padding:12px 28px;
-  font-size:.9rem;
-  border-radius:30px;
-  background:linear-gradient(135deg,var(--accent),#ff3b30);
-  transition:.3s
-}
-.cta a.secondary{
-  background:none;
-  border:1px solid #fff
-}
-.cta a:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(225,6,0,.4)}
+    a{text-decoration:none;color:inherit}
 
-section{padding:80px 20px;max-width:1100px;margin:auto}
-section h3{text-align:center;font-size:1.9rem;margin-bottom:18px}
-section p{text-align:center;color:#cfcfcf;max-width:850px;margin:auto}
+    /* HERO */
+    header{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:40px 20px;
+      background:radial-gradient(circle at top,#1a1a1a,#000);
+    }
+    header img{width:180px;height:180px;margin-bottom:20px}
+    header h1{font-size:3rem;letter-spacing:2px}
+    header h2{margin-top:8px;font-weight:300;letter-spacing:5px;color:#cfcfcf}
+    header p{max-width:650px;margin-top:18px;color:#bdbdbd}
+    .badges{margin-top:20px;font-size:.9rem;color:#eee}
+    .cta-main{margin-top:30px;display:flex;gap:15px;flex-wrap:wrap;justify-content:center}
+    .cta-main a{
+      padding:12px 28px;
+      font-size:.9rem;
+      border-radius:30px;
+      background:linear-gradient(135deg,var(--accent),#ff3b30);
+      transition:.3s;
+      color: #fff;
+      font-weight: 600;
+    }
+    .cta-main a:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(225,6,0,.4)}
 
-/* FEATURES */
-.features{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px}
-.feature{
-  padding:25px;
-  border:1px solid #222;
-  background:linear-gradient(180deg,#111,#080808);
-  text-align:center
-}
+    section{padding:80px 20px;max-width:1100px;margin:auto}
+    section h3{text-align:center;font-size:1.9rem;margin-bottom:18px; text-transform: uppercase; letter-spacing: 2px;}
 
-/* PRODUCTS */
-.products{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px}
-.product{background:#0e0e0e;border:1px solid #222;padding:18px}
-.product img{width:100%;border:1px solid #222;margin-bottom:12px}
-.product h4{margin-bottom:8px}
-.product p{text-align:left;font-size:.9rem;color:#bdbdbd}
+    /* PRODUCT SLIDER */
+    .products{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px}
+    .product{background:#0e0e0e;border:1px solid #222;padding:25px; border-radius: 12px;}
+    
+    .slider-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 10px;
+      margin-bottom: 20px;
+      scrollbar-width: none; /* Firefox */
+    }
+    .slider-container::-webkit-scrollbar { display: none; } /* Chrome/Safari */
 
-/* LOOKBOOK */
-.lookbook{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-.lookbook img,.lookbook video{width:100%;border-radius:8px;border:1px solid #222}
+    .slider-container img {
+      width: 100%;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      border: 1px solid #222;
+      border-radius: 8px;
+      object-fit: cover;
+    }
 
-/* FOOTER */
-footer{border-top:1px solid #222;padding:40px 20px;text-align:center;color:#9e9e9e}
-footer .social{margin-top:15px;display:flex;justify-content:center;gap:25px}
+    .product h4{margin-bottom:12px; font-size: 1.4rem;}
+    .product p{text-align:left;font-size:.95rem;color:#bdbdbd; margin-bottom: 20px;}
+    
+    .buy-btn {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      padding: 12px;
+      background: #fff;
+      color: #000;
+      font-weight: 700;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+    .buy-btn:hover { background: var(--accent); color: #fff; }
 
-@media(max-width:600px){
-  header h1{font-size:2.3rem}
-}
+    /* LOOKBOOK HORIZONTAL */
+    .lookbook{
+      display:flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap:20px;
+      padding-bottom: 20px;
+    }
+    .lookbook video{
+      min-width: 300px;
+      border-radius:8px;
+      border:1px solid #222;
+      scroll-snap-align: center;
+    }
 
+    footer{border-top:1px solid #222;padding:40px 20px;text-align:center;color:#9e9e9e}
+    footer .social{margin-top:15px;display:flex;justify-content:center;gap:25px}
+
+    @media(max-width:600px){
+      header h1{font-size:2.3rem}
+      .product { padding: 15px; }
+    }
   </style>
 </head>
-<body><header>
+<body>
+
+<header>
   <img src="logo2.png" alt="darTkiller logo">
   <h1>darTkiller</h1>
   <h2>DEFINED IN BLACK</h2>
   <p>Premium oversized streetwear built with attitude, purpose, and uncompromised quality.</p>
   <div class="badges">240 GSM · 100% Pure Cotton · Premium Oversized Fit</div>
-  <div class="cta">
-    <a href="#">🛒 Shop on Amazon</a>
-    <a href="#" class="secondary">🛍️ Shop on Flipkart</a>
+  <div class="cta-main">
+    <a href="https://amzn.to/your_general_store_link">🛒 SHOP THE COLLECTION</a>
   </div>
-</header><section>
-  <h3>The Brand</h3>
-  <p>
-    darTkiller is a premium streetwear label focused on deep black oversized T-shirts.
-    Designed for modern individuals who value strength, simplicity, and presence.
-    Every piece is crafted using heavyweight 240 GSM cotton for a bold, lasting feel.
-  </p>
-</section><section>
-  <h3>Fabric & Craft</h3>
-  <div class="features">
-    <div class="feature">240 GSM Heavyweight Cotton</div>
-    <div class="feature">100% Pure Cotton</div>
-    <div class="feature">Soft-touch & Breathable</div>
-    <div class="feature">Premium Oversized Street Fit</div>
-    <div class="feature">Fade-resistant Deep Black</div>
-    <div class="feature">Built for Everyday Wear</div>
-  </div>
-</section><section>
+</header>
+
+<section id="collection">
   <h3>Signature Collection</h3>
+  <p style="text-align:center; color:#cfcfcf; margin-bottom:40px;">Swipe horizontally to view more angles.</p>
+  
   <div class="products">
     <div class="product">
-      <img src="design-adapt.png" alt="I Don't Break I Adapt">
-    <img src="model-2.png" alt="Model pose">
+      <div class="slider-container">
+        <img src="design-adapt.png" alt="I Don't Break I Adapt Front">
+        <img src="model-2.png" alt="I Don't Break I Adapt On Model">
+      </div>
       <h4>I Don’t Break, I Adapt</h4>
       <p>A bold futuristic design printed on premium 240 GSM cotton. Built for resilience and confidence.</p>
+      <a href="https://amzn.in/d/0g7bXkGC" target="_blank" class="buy-btn">BUY ON AMAZON</a>
     </div>
+
     <div class="product">
-      <img src="design-territory.png" alt="Walk Your Own Territory">
-      <img src="model-1.png" alt="Model pose">
+      <div class="slider-container">
+        <img src="design-territory.png" alt="Walk Your Own Territory Front">
+        <img src="model-1.png" alt="Walk Your Own Territory On Model">
+      </div>
       <h4>Own Your Territory</h4>
       <p>A powerful silhouette design symbolizing independence and control. Clean, minimal, and strong.</p>
+      <a href="https://amzn.in/d/03vsVvU2" target="_blank" class="buy-btn">BUY ON AMAZON</a>
     </div>
   </div>
-</section><section>
+</section>
+
+<section>
   <h3>Lookbook</h3>
-  <p>Real fits. Real attitude. Styled for movement and presence.</p>
   <div class="lookbook">
-    <video controls autoplay muted loop width="400">
-  <source src="model-pose-1.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-    <video controls autoplay muted loop width="400">
-  <source src="model-pose-2.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+    <video controls autoplay muted loop>
+      <source src="model-pose-1.mp4" type="video/mp4">
+    </video>
+    <video controls autoplay muted loop>
+      <source src="model-pose-2.mp4" type="video/mp4">
+    </video>
   </div>
-</section><footer>
+</section>
+
+<footer>
   <p>© darTkiller — Defined in Black</p>
   <div class="social">
     <a href="https://www.instagram.com/dartkillerofficial?igsh=Mms3ZmtzNXp4cWdq" target="_blank">📸 Instagram</a>
     <a href="https://youtube.com/@dartkillerofficial?si=CY4MZqkYdc-PfMmT" target="_blank">▶️ YouTube</a>
   </div>
-</footer></body>
+</footer>
+
+</body>
 </html>
