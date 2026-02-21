@@ -6,283 +6,336 @@
 <title>darTkiller | Defined in Black</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 :root {
   --accent: #e10600;
   --bg: #000;
-  --card-bg: #0c0c0c;
+  --card-bg: #0a0a0a;
   --text: #fff;
   --muted: #888;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior:smooth; }
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
+  font-family:'Montserrat',sans-serif;
+  color:var(--text);
+  overflow-x:hidden;
+  background:#000;
+}
+
+/* ================= VIDEO BACKGROUND ================= */
+
+.video-bg {
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  overflow:hidden;
+}
+
+.video-bg video {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(0.35);
+}
+
+body::after {
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.75);
+  z-index:-1;
 }
 
 /* ================= NAV ================= */
 
 nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  background: rgba(0,0,0,0.95);
-  backdrop-filter: blur(10px);
-  padding: 15px 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #1a1a1a;
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  backdrop-filter:blur(10px);
+  background:rgba(0,0,0,0.6);
+  padding:15px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #222;
 }
 
 .logo-nav {
-  font-weight: 900;
-  letter-spacing: 2px;
+  font-weight:900;
+  letter-spacing:2px;
 }
 
 .nav-socials {
-  display: flex;
-  gap: 20px;
+  display:flex;
+  gap:15px;
 }
 
 .nav-socials a {
-  font-size: 0.75rem;
-  padding: 6px 12px;
-  border: 1px solid #333;
-  border-radius: 4px;
-  transition: 0.3s;
+  background:#111;
+  border:1px solid #333;
+  padding:8px 12px;
+  border-radius:8px;
+  color:#fff;
+  font-size:1rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:0.3s;
 }
 
 .nav-socials a:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  background:var(--accent);
+  transform:translateY(-3px);
 }
 
 /* ================= HERO ================= */
 
 header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 100px 20px 60px;
-  text-align: center;
-  background: radial-gradient(circle at top, #1a1a1a, #000);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:100px 20px 40px;
 }
 
 header img {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  margin-bottom: 20px;
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  margin-bottom:20px;
 }
 
 header h1 {
-  font-size: clamp(2.5rem, 8vw, 4rem);
-  font-weight: 900;
-  background: linear-gradient(90deg,#fff,#aaa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size:clamp(2.5rem,8vw,4rem);
+  font-weight:900;
+  background:linear-gradient(90deg,#fff,#aaa);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
 header h2 {
-  margin-top: 8px;
-  font-weight: 300;
-  letter-spacing: 5px;
-  color: #ccc;
+  margin-top:8px;
+  font-weight:300;
+  letter-spacing:5px;
+  color:#ccc;
 }
 
 header p {
-  max-width: 600px;
-  margin-top: 20px;
-  color: #aaa;
+  max-width:650px;
+  margin-top:18px;
+  color:#bbb;
 }
 
 .cta-main {
-  margin-top: 30px;
+  margin-top:30px;
 }
 
 .cta-main a {
-  padding: 14px 35px;
-  border-radius: 30px;
-  background: linear-gradient(135deg,var(--accent),#ff3b30);
-  color: #fff;
-  font-weight: 700;
-  transition: 0.4s;
+  padding:15px 35px;
+  border-radius:30px;
+  background:linear-gradient(135deg,var(--accent),#ff3b30);
+  color:#fff;
+  font-weight:700;
+  transition:0.3s;
 }
 
 .cta-main a:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(225,6,0,0.4);
+  transform:translateY(-4px);
+  box-shadow:0 10px 30px rgba(225,6,0,0.4);
 }
 
 /* ================= SECTIONS ================= */
 
 section {
-  padding: 100px 5%;
-  max-width: 1200px;
-  margin: auto;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 0.8s ease;
-}
-
-section.visible {
-  opacity: 1;
-  transform: translateY(0);
+  padding:100px 5%;
+  max-width:1200px;
+  margin:auto;
 }
 
 h3 {
-  text-align: center;
-  margin-bottom: 50px;
-  font-size: 2rem;
-  font-weight: 900;
-  text-transform: uppercase;
+  text-align:center;
+  font-size:2rem;
+  margin-bottom:40px;
+  font-weight:900;
+  text-transform:uppercase;
 }
+
+/* ================= FEATURES ================= */
+
+.features-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
+
+.feature-box {
+  background:#080808;
+  padding:20px;
+  border-left:3px solid var(--accent);
+}
+
+.feature-box p { color:var(--muted); font-size:0.9rem; }
 
 /* ================= PRODUCTS ================= */
 
 .products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(340px,1fr));
-  gap: 50px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:40px;
 }
 
 .product {
-  background: linear-gradient(145deg,#0d0d0d,#050505);
-  border-radius: 18px;
-  padding: 30px;
-  transition: 0.4s;
-  border: 1px solid #1a1a1a;
+  background:linear-gradient(145deg,#0d0d0d,#050505);
+  padding:25px;
+  border-radius:18px;
+  border:1px solid #1a1a1a;
+  transition:0.4s;
 }
 
 .product:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(225,6,0,0.15);
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(225,6,0,0.15);
 }
 
 /* ================= SLIDER ================= */
 
-.slider-wrapper {
-  position: relative;
-  margin-bottom: 25px;
-}
+.slider-wrapper { position:relative; }
 
 .slider-container {
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  gap: 20px;
+  display:flex;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  gap:20px;
+  margin-bottom:20px;
 }
 
 .slider-container::-webkit-scrollbar {
-  height: 6px;
+  height:6px;
 }
-
 .slider-container::-webkit-scrollbar-thumb {
-  background: var(--accent);
-  border-radius: 10px;
+  background:var(--accent);
+  border-radius:10px;
 }
 
 .slider-container img,
 .slider-container video {
-  min-width: 90%;
-  max-width: 90%;
-  scroll-snap-align: center;
-  border-radius: 12px;
-  border: 1px solid #222;
-  transition: 0.4s;
+  min-width:90%;
+  max-width:90%;
+  scroll-snap-align:center;
+  border-radius:12px;
+  border:1px solid #222;
+  transition:0.4s;
 }
 
 .slider-container img:hover,
 .slider-container video:hover {
-  transform: scale(1.04);
+  transform:scale(1.04);
 }
-
-/* arrows */
 
 .arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.6);
-  padding: 10px 14px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 1.4rem;
-  z-index: 10;
-  transition: 0.3s;
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,0.6);
+  padding:10px 14px;
+  border-radius:50%;
+  cursor:pointer;
+  z-index:10;
+  transition:0.3s;
 }
 
-.arrow:hover {
-  background: var(--accent);
-}
+.arrow:hover { background:var(--accent); }
 
-.arrow-left { left: 10px; }
-.arrow-right { right: 10px; }
-
-/* buy button */
+.arrow-left { left:10px; }
+.arrow-right { right:10px; }
 
 .buy-btn {
-  display: block;
-  text-align: center;
-  margin-top: 15px;
-  padding: 14px;
-  background: #fff;
-  color: #000;
-  font-weight: 800;
-  border-radius: 8px;
-  transition: 0.3s;
+  display:block;
+  text-align:center;
+  padding:14px;
+  background:#fff;
+  color:#000;
+  font-weight:800;
+  border-radius:8px;
+  text-transform:uppercase;
+  transition:0.3s;
 }
 
 .buy-btn:hover {
-  background: var(--accent);
-  color: #fff;
+  background:var(--accent);
+  color:#fff;
 }
 
 /* ================= FOOTER ================= */
 
 footer {
-  border-top: 1px solid #1a1a1a;
-  padding: 60px 20px;
-  text-align: center;
-  color: #777;
+  border-top:1px solid #222;
+  padding:60px 20px;
+  text-align:center;
+  color:#aaa;
 }
 
 .footer-socials {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+}
+
+.footer-socials a {
+  background:#111;
+  border:1px solid #333;
+  padding:8px 12px;
+  border-radius:8px;
+  color:#fff;
+  font-size:1.2rem;
+  transition:0.3s;
 }
 
 .footer-socials a:hover {
-  color: var(--accent);
+  background:var(--accent);
+  transform:translateY(-3px);
+}
+
+@media(max-width:600px){
+  .slider-container img,
+  .slider-container video {
+    min-width:95%;
+  }
 }
 </style>
 </head>
+
 <body>
+
+<!-- Background Video -->
+<div class="video-bg">
+  <video autoplay muted loop playsinline>
+    <source src="model-pose-1.mp4" type="video/mp4">
+  </video>
+</div>
 
 <nav>
   <div class="logo-nav">DARTKILLER</div>
   <div class="nav-socials">
-    <a href="https://www.instagram.com/dartkillerofficial?igsh=Mms3ZmtzNXp4cWdq" target="_blank">Instagram</a>
-    <a href="https://youtube.com/@dartkillerofficial?si=Iho5_memvWeYHWwB" target="_blank">YouTube</a>
+    <a href="https://www.instagram.com/dartkillerofficial?igsh=Mms3ZmtzNXp4cWdq" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://youtube.com/@dartkillerofficial?si=Iho5_memvWeYHWwB" target="_blank">
+      <i class="fab fa-youtube"></i>
+    </a>
   </div>
 </nav>
 
@@ -290,13 +343,25 @@ footer {
   <img src="logo2.png" alt="darTkiller logo">
   <h1>darTkiller</h1>
   <h2>DEFINED IN BLACK</h2>
-  <p>Premium oversized streetwear built with attitude, 240 GSM heavyweight cotton, and uncompised quality.</p>
+  <p>Premium oversized streetwear built with attitude, 240 GSM heavyweight cotton, and uncompromised quality.</p>
   <div class="cta-main">
     <a href="https://www.amazon.in/l/27943762031?ie=UTF8&marketplaceID=A21TJRUUN4KGV&product=B0GN1T9DX8&me=A12R6W4ZO0QYIT">🛒 SHOP ON AMAZON</a>
   </div>
 </header>
 
-<section>
+<!-- ABOUT -->
+<section id="about">
+<h3>Crafted for Presence</h3>
+<div class="features-grid">
+<div class="feature-box"><h4>240 GSM</h4><p>Heavyweight fabric for a bold silhouette.</p></div>
+<div class="feature-box"><h4>100% COTTON</h4><p>Pure, breathable, and soft-touch.</p></div>
+<div class="feature-box"><h4>OVERSIZED FIT</h4><p>Perfect drop-shoulder streetwear cut.</p></div>
+<div class="feature-box"><h4>FADE RESISTANT</h4><p>Deep black that stays black.</p></div>
+</div>
+</section>
+
+<!-- COLLECTION -->
+<section id="collection">
 <h3>Signature Collection</h3>
 <div class="products">
 
@@ -346,39 +411,44 @@ footer {
 </div>
 </section>
 
+<!-- LOOKBOOK -->
+<section id="lookbook">
+<h3>Lookbook</h3>
+<div class="slider-wrapper">
+<div class="arrow arrow-left">&#10094;</div>
+<div class="arrow arrow-right">&#10095;</div>
+<div class="slider-container">
+<video controls muted loop>
+<source src="model-pose-1.mp4" type="video/mp4">
+</video>
+<video controls muted loop>
+<source src="model-pose-2.mp4" type="video/mp4">
+</video>
+</div>
+</div>
+</section>
+
 <footer>
 <p>© darTkiller — Defined in Black</p>
 <div class="footer-socials">
-<a href="https://www.instagram.com/dartkillerofficial?igsh=Mms3ZmtzNXp4cWdq" target="_blank">Instagram</a>
-<a href="https://youtube.com/@dartkillerofficial?si=Iho5_memvWeYHWwB" target="_blank">YouTube</a>
+<a href="https://www.instagram.com/dartkillerofficial?igsh=Mms3ZmtzNXp4cWdq" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://youtube.com/@dartkillerofficial?si=Iho5_memvWeYHWwB" target="_blank"><i class="fab fa-youtube"></i></a>
 </div>
 </footer>
 
 <script>
-document.querySelectorAll('.slider-wrapper').forEach(wrapper => {
-  const slider = wrapper.querySelector('.slider-container');
-  const left = wrapper.querySelector('.arrow-left');
-  const right = wrapper.querySelector('.arrow-right');
+document.querySelectorAll('.slider-wrapper').forEach(wrapper=>{
+const slider=wrapper.querySelector('.slider-container');
+const left=wrapper.querySelector('.arrow-left');
+const right=wrapper.querySelector('.arrow-right');
 
-  right.addEventListener('click', () => {
-    slider.scrollBy({ left: slider.clientWidth, behavior: 'smooth' });
-  });
-
-  left.addEventListener('click', () => {
-    slider.scrollBy({ left: -slider.clientWidth, behavior: 'smooth' });
-  });
+right.addEventListener('click',()=>{
+slider.scrollBy({left:slider.clientWidth,behavior:'smooth'});
 });
-
-const sections = document.querySelectorAll("section");
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add("visible");
-    }
-  });
-},{threshold:0.2});
-
-sections.forEach(section => observer.observe(section));
+left.addEventListener('click',()=>{
+slider.scrollBy({left:-slider.clientWidth,behavior:'smooth'});
+});
+});
 </script>
 
 </body>
