@@ -15,7 +15,6 @@
     }
     :root{
       --accent:#e10600;
-      --gold:#c7a24b;
     }
     a{text-decoration:none;color:inherit}
 
@@ -34,7 +33,7 @@
     header h1{font-size:3rem;letter-spacing:2px}
     header h2{margin-top:8px;font-weight:300;letter-spacing:5px;color:#cfcfcf}
     header p{max-width:650px;margin-top:18px;color:#bdbdbd}
-    .badges{margin-top:20px;font-size:.9rem;color:#eee}
+    
     .cta-main{margin-top:30px;display:flex;gap:15px;flex-wrap:wrap;justify-content:center}
     .cta-main a{
       padding:12px 28px;
@@ -45,37 +44,54 @@
       color: #fff;
       font-weight: 600;
     }
-    .cta-main a:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(225,6,0,.4)}
 
-    section{padding:80px 20px;max-width:1100px;margin:auto}
-    section h3{text-align:center;font-size:1.9rem;margin-bottom:18px; text-transform: uppercase; letter-spacing: 2px;}
+    section{padding:60px 20px;max-width:1100px;margin:auto}
+    section h3{text-align:center;font-size:1.9rem;margin-bottom:18px; text-transform: uppercase;}
 
-    /* PRODUCT SLIDER */
+    /* PRODUCT SLIDER WITH ARROWS */
     .products{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px}
-    .product{background:#0e0e0e;border:1px solid #222;padding:25px; border-radius: 12px;}
+    .product{background:#0e0e0e;border:1px solid #222;padding:25px; border-radius: 12px; position: relative;}
     
+    .slider-wrapper { position: relative; }
+
     .slider-container {
       display: flex;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       gap: 10px;
       margin-bottom: 20px;
-      scrollbar-width: none; /* Firefox */
+      scrollbar-width: none;
     }
-    .slider-container::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+    .slider-container::-webkit-scrollbar { display: none; }
 
-    .slider-container img {
+    .slider-container img, .slider-container video {
       width: 100%;
       flex-shrink: 0;
       scroll-snap-align: start;
       border: 1px solid #222;
       border-radius: 8px;
-      object-fit: cover;
     }
 
-    .product h4{margin-bottom:12px; font-size: 1.4rem;}
-    .product p{text-align:left;font-size:.95rem;color:#bdbdbd; margin-bottom: 20px;}
-    
+    /* BLINKING ARROWS */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: #fff;
+      pointer-events: none;
+      z-index: 10;
+      animation: blink 1.5s infinite;
+      text-shadow: 0 0 10px rgba(0,0,0,0.8);
+    }
+    .arrow-left { left: 10px; }
+    .arrow-right { right: 10px; }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+
     .buy-btn {
       display: inline-block;
       width: 100%;
@@ -89,28 +105,7 @@
     }
     .buy-btn:hover { background: var(--accent); color: #fff; }
 
-    /* LOOKBOOK HORIZONTAL */
-    .lookbook{
-      display:flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap:20px;
-      padding-bottom: 20px;
-    }
-    .lookbook video{
-      min-width: 300px;
-      border-radius:8px;
-      border:1px solid #222;
-      scroll-snap-align: center;
-    }
-
     footer{border-top:1px solid #222;padding:40px 20px;text-align:center;color:#9e9e9e}
-    footer .social{margin-top:15px;display:flex;justify-content:center;gap:25px}
-
-    @media(max-width:600px){
-      header h1{font-size:2.3rem}
-      .product { padding: 15px; }
-    }
   </style>
 </head>
 <body>
@@ -119,35 +114,38 @@
   <img src="logo2.png" alt="darTkiller logo">
   <h1>darTkiller</h1>
   <h2>DEFINED IN BLACK</h2>
-  <p>Premium oversized streetwear built with attitude, purpose, and uncompromised quality.</p>
-  <div class="badges">240 GSM · 100% Pure Cotton · Premium Oversized Fit</div>
+  <p>Premium oversized streetwear built with attitude and uncompromised quality.</p>
   <div class="cta-main">
-    <a href="https://amzn.to/your_general_store_link">🛒 SHOP THE COLLECTION</a>
+    <a href="https://www.amazon.in/l/27943762031?ie=UTF8&marketplaceID=A21TJRUUN4KGV&product=B0GN1T9DX8&me=A12R6W4ZO0QYIT">🛒 SHOP THE COLLECTION</a>
   </div>
 </header>
 
 <section id="collection">
   <h3>Signature Collection</h3>
-  <p style="text-align:center; color:#cfcfcf; margin-bottom:40px;">Swipe horizontally to view more angles.</p>
-  
   <div class="products">
     <div class="product">
-      <div class="slider-container">
-        <img src="design-adapt.png" alt="I Don't Break I Adapt Front">
-        <img src="model-2.png" alt="I Don't Break I Adapt On Model">
+      <div class="slider-wrapper">
+        <span class="arrow arrow-right">→</span>
+        <div class="slider-container">
+          <img src="design-adapt.png" alt="Front">
+          <img src="model-2.png" alt="On Model">
+        </div>
       </div>
       <h4>I Don’t Break, I Adapt</h4>
-      <p>A bold futuristic design printed on premium 240 GSM cotton. Built for resilience and confidence.</p>
+      <p>A bold futuristic design on premium 240 GSM cotton.</p>
       <a href="https://amzn.in/d/0g7bXkGC" target="_blank" class="buy-btn">BUY ON AMAZON</a>
     </div>
 
     <div class="product">
-      <div class="slider-container">
-        <img src="design-territory.png" alt="Walk Your Own Territory Front">
-        <img src="model-1.png" alt="Walk Your Own Territory On Model">
+      <div class="slider-wrapper">
+        <span class="arrow arrow-right">→</span>
+        <div class="slider-container">
+          <img src="design-territory.png" alt="Front">
+          <img src="model-1.png" alt="On Model">
+        </div>
       </div>
       <h4>Own Your Territory</h4>
-      <p>A powerful silhouette design symbolizing independence and control. Clean, minimal, and strong.</p>
+      <p>A powerful silhouette design symbolizing control.</p>
       <a href="https://amzn.in/d/03vsVvU2" target="_blank" class="buy-btn">BUY ON AMAZON</a>
     </div>
   </div>
@@ -155,23 +153,42 @@
 
 <section>
   <h3>Lookbook</h3>
-  <div class="lookbook">
-    <video controls autoplay muted loop>
-      <source src="model-pose-1.mp4" type="video/mp4">
-    </video>
-    <video controls autoplay muted loop>
-      <source src="model-pose-2.mp4" type="video/mp4">
-    </video>
+  <div class="slider-wrapper">
+    <span class="arrow arrow-right">→</span>
+    <div class="slider-container" style="gap: 20px;">
+      <video controls autoplay muted loop style="min-width: 80%;">
+        <source src="model-pose-1.mp4" type="video/mp4">
+      </video>
+      <video controls autoplay muted loop style="min-width: 80%;">
+        <source src="model-pose-2.mp4" type="video/mp4">
+      </video>
+    </div>
   </div>
 </section>
 
 <footer>
   <p>© darTkiller — Defined in Black</p>
-  <div class="social">
-    <a href="https://www.instagram.com/dartkillerofficial?igsh=Mms3ZmtzNXp4cWdq" target="_blank">📸 Instagram</a>
-    <a href="https://youtube.com/@dartkillerofficial?si=CY4MZqkYdc-PfMmT" target="_blank">▶️ YouTube</a>
-  </div>
 </footer>
+
+<script>
+  // Simple logic to hide/show arrows based on scroll position
+  document.querySelectorAll('.slider-container').forEach(slider => {
+    slider.addEventListener('scroll', () => {
+      const wrapper = slider.parentElement;
+      const rightArrow = wrapper.querySelector('.arrow-right');
+      const leftArrow = wrapper.querySelector('.arrow-left');
+      
+      // Show/Hide Right Arrow
+      if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
+        if(rightArrow) rightArrow.style.display = 'none';
+      } else {
+        if(rightArrow) rightArrow.style.display = 'block';
+      }
+
+      // Logic for Left Arrow (Add one to the HTML if you want it to blink when scrolling back)
+    });
+  });
+</script>
 
 </body>
 </html>
